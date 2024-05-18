@@ -46,7 +46,7 @@ const getCrimeUnsolved = asyncHandler(async (req, res) => {
   const unsolvedCrime = await Report.find({
     reportType: "Crime",
     userId: req.params.id,
-    action_status: { $in: ["Pending", "InProgress"] },
+    action_status: { $in: ["Pending", "Under Investigation"] },
   }).populate("userId");
   res.status(200).json(unsolvedCrime);
 });
@@ -55,7 +55,7 @@ const getCrimeOngoing = asyncHandler(async (req, res) => {
   const ongoingCrime = await Report.find({
     reportType: "Crime",
     userId: req.params.id,
-    action_status: "InProgress",
+    action_status: "Under Investigation",
   }).populate("userId");
   res.status(200).json(ongoingCrime);
 });
@@ -81,7 +81,7 @@ const getAccidentUnsolved = asyncHandler(async (req, res) => {
   const unsolvedAccident = await Report.find({
     reportType: "Accident",
     userId: req.params.id,
-    action_status: { $in: ["Pending", "InProgress"] },
+    action_status: { $in: ["Pending", "Under Investigation"] },
   }).populate("userId");
   res.status(200).json(unsolvedAccident);
 });

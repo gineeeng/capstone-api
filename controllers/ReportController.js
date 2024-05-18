@@ -54,14 +54,14 @@ const getSolvedReports = asyncHandler(async (req, res) => {
 
 const getUnsolvedReports = asyncHandler(async (req, res) => {
   const unsolvedReports = await Report.find({
-    action_status: { $in: ["InProgress", "Pending"] },
+    action_status: { $in: ["Under Investigation", "Pending"] },
   }).populate("userId");
   res.status(200).json(unsolvedReports);
 });
 const getUnsolvedCrimeReports = asyncHandler(async (req, res) => {
   const unsolvedReports = await Report.find({
     reportType: "Crime",
-    action_status: { $in: ["InProgress", "Pending"] },
+    action_status: { $in: ["Under Investigation", "Pending"] },
   }).populate("userId");
   res.status(200).json(unsolvedReports);
 });
@@ -77,7 +77,7 @@ const getSolvedCrimeReports = asyncHandler(async (req, res) => {
 const getUnsolvedAccidentReports = asyncHandler(async (req, res) => {
   const unsolvedReports = await Report.find({
     reportType: "Accident",
-    action_status: { $in: ["InProgress", "Pending"] },
+    action_status: { $in: ["Under Investigation", "Pending"] },
   }).populate("userId");
   res.status(200).json(unsolvedReports);
 });
@@ -101,7 +101,7 @@ const getSolvedHazardReports = asyncHandler(async (req, res) => {
 const getUnsolvedHazardReports = asyncHandler(async (req, res) => {
   const unsolvedReports = await Report.find({
     reportType: "Hazards",
-    action_status: { $in: ["InProgress", "Pending"] },
+    action_status: { $in: ["Under Investigation", "Pending"] },
   }).populate("userId");
   res.status(200).json(unsolvedReports);
 });
@@ -117,7 +117,7 @@ const getSolvedArsonReports = asyncHandler(async (req, res) => {
 const getUnsolvedArsonReports = asyncHandler(async (req, res) => {
   const unsolvedReports = await Report.find({
     reportType: "Arson/Fire",
-    action_status: "InProgress",
+    action_status: "Under Investigation",
   }).populate("userId");
   res.status(200).json(unsolvedReports);
 });
