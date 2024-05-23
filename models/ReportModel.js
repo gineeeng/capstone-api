@@ -77,8 +77,8 @@ const reportSchema = mongoose.Schema(
     action_status: {
       type: String,
       trim: true,
-      enum: ["Pending","Under Investigation", "Solved",  "Case Closed", "Archive"],
-      default: "Pending",
+      enum: ["Under Investigation", "Solved",  "Case Closed", "Archive"],
+      default: "Under Investigation",
     },
     userId: {
       type: String,
