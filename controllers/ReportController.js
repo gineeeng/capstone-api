@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Report = require("../models/ReportModel");
+const { getIO } = require("../socket");
 
 const getAllReport = asyncHandler(async (req, res) => {
   const reportRecords = await Report.find().populate("userId");
@@ -196,6 +197,11 @@ const updateReport = asyncHandler(async (req, res) => {
     res.status(404).json({ error: "Report not found" });
     return;
   }
+
+  const userId = reportRecord.userId;
+
+  const io = getIO();
+  io.emit(userId, "change");
 
   res.status(200).json(reportRecord);
 });
