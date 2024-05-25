@@ -132,7 +132,6 @@ const createReport = asyncHandler(async (req, res) => {
     videoURL,
     date,
     location,
-    description,
     numberOfCasualties,
     numberOfInjuries,
     injurySeverity,
@@ -145,7 +144,6 @@ const createReport = asyncHandler(async (req, res) => {
     !type ||
     !date ||
     !location ||
-    !description ||
     !userId ||
     !injurySeverity
   ) {
@@ -156,7 +154,6 @@ const createReport = asyncHandler(async (req, res) => {
   const reportRecordExist = await Report.findOne({
     reportType,
     type,
-    description,
     date,
     location,
     userId,
@@ -175,7 +172,6 @@ const createReport = asyncHandler(async (req, res) => {
     videoURL,
     date,
     location,
-    description,
     numberOfCasualties,
     numberOfInjuries,
     injurySeverity,
