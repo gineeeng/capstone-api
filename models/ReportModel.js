@@ -69,11 +69,6 @@ const reportSchema = mongoose.Schema(
       enum: ["Minor", "Moderate", "Major", "Severe"],
       required: [true, "Please add a Value"],
     },
-    description: {
-      type: String,
-      trim: true,
-      required: [true, "Please add a Value"],
-    },
     action_status: {
       type: String,
       trim: true,
